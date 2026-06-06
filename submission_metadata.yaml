@@ -1,0 +1,56 @@
+team_name: "aradhya-recruiter-engine"
+
+primary_contact:
+  name: "Sarthak Gavade"
+  email: "sarthakgavade031@gmail.com"
+  phone: "+91-8623882437
+
+team_members:
+  - name: "Sarthak Gavade"
+    email: "sarthakgavade031@gmail.com"
+    role: "Solo Participant — Full Stack ML Engineer"
+
+github_repo: "https://github.com/sarthakgavade031-maker/aradhya-recruiter"
+
+sandbox_link: "https://colab.research.google.com/github/sarthakgavade031-maker/aradhya-recruiter/blob/main/aradhya_redrob_ranker.ipynb"
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+compute:
+  platform: "Windows 11, Intel CPU"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.11"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude for architecture design, code review, and debugging.
+  All scoring logic, signal weights, and honeypot detection designed
+  and implemented by the participant. No candidate data was fed to any LLM.
+  Claude was used as a coding assistant, not as the ranking system itself.
+
+methodology_summary: |
+  Rule-based 6-signal hybrid ranker with trust-weighted skill scoring.
+  Six scoring components: skill depth (30%), career trajectory (30%),
+  experience fit (15%), behavioral availability (12%), location (8%),
+  education (5%). Skill trust multiplier uses proficiency x log(endorsements+1)
+  x duration_ratio to penalize keyword stuffers. Career component rewards
+  ML roles at product companies and penalizes pure services backgrounds.
+  Behavioral component uses 23 Redrob signals as availability modifier.
+  Honeypot detection: expert proficiency with 0 duration_months flagged,
+  10+ expert skills excluded. Runtime: ~2 min for 100K candidates on CPU.
+  39 honeypots detected and excluded. Zero external dependencies.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true
